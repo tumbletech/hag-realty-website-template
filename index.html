@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAG Realty \u2013 Find the Property That Feels Like Home</title>
+  <meta name="description" content="HAG Realty helps families, investors, and future homeowners discover exceptional properties in General Trias City, Cavite, and nearby areas." />
+
+  <!-- ============================================================
+       GOOGLE FONTS
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================
+       CSS
+  ============================================================ -->
+  <style>
+    /* \u2500\u2500 VARIABLES \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+    :root {
+      --black:       #080808;
+      --dark:        #111111;
+      --dark2:       #181818;
+      --charcoal:    #1e1e1e;
+      --charcoal2:   #252525;
+      --charcoal3:   #2e2e2e;
+      --gold:        #c9a84c;
+      --gold-light:  #e2c47b;
+      --gold-dim:    #a07830;
+      --offwhite:    #f0ede6;
+      --white:       #ffffff;
+      --muted:       #7a7a7a;
+      --muted2:      #555555;
+      --glass-bg:    rgba(255,255,255,0.04);
+      --glass-border:rgba(201,168,76,0.18);
+      --radius:      6px;
+      --radius-lg:   14px;
+      --transition:  0.38s cubic-bezier(0.4,0,0.2,1);
+      --font-serif:  'Cormorant Garamond', Georgia, serif;
+      --font-sans:   'Montserrat', sans-serif;
+      --gutter:      clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    /* \u2500\u2500 RESET \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--black);
+      color: var(--offwhite);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: var(--font-sans); cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+
+    /* \u2500\u2500 SCROLL PROGRESS BAR \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-light));
+      z-index: 10000;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    /* \u2500\u2500 STICKY HEADER \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9000;
+      padding: 0 var(--gutter);
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      transition: background var(--transition), backdrop-filter var(--transition), box-shadow var(--transition);
+    }
+    #header.scrolled {
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 1px 0 var(--glass-border), 0 8px 32px rgba(0,0,0,0.6);
+    }
+
+    /* brand */
+    .header-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--gold-light);
+    }
+    .brand-location {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* nav */
+    .header-nav {
+      display: flex;
+      align-items: center
